@@ -18,3 +18,9 @@ Setting up your AWS IAM users
  - Choose the permissions for the IAM user by adding them to one or more IAM groups or attaching policies directly. You can use admin permissions for lab purposes but I do emphasize on the least privilege assignment.
  - If you selected “Programmatic access” during user creation, you will receive access keys (Access Key ID and Secret Access Key).
  - Store these access keys securely, as they will be used to authenticate API requests made to AWS services.
+
+Configuring AWS CLI and Kubectl
+
+After downloading and installing AWS CLI as per the prerequisites above, configure the AWS CLI credentials:
+
+aws configure
