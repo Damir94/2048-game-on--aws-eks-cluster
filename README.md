@@ -32,7 +32,7 @@ aws configure
 
 Installing EKS Cluster using Fargate
 
-eksctl create cluster --name cluster-2048-game --region us-east-1 --fargate
+ - eksctl create cluster --name cluster-2048-game --region us-east-1 --fargate
 
 Fargate is a serverless compute engine that lets you focus on building applications without managing servers. While we can also leverage EC2 instances for installing our EKS cluster, it requires us to manually configure and manage all the compute and memory resources, build your container image, isolate applications in separate VMs etc.
 
@@ -47,7 +47,7 @@ Configuring kubectl for EKS
  - In the AWS Management Console, go to the EKS service and select your cluster.
  - Click on the “Config” button and follow the instructions to update your kubeconfig file. Alternatively, you can use the AWS CLI to update the kubeconfig file:
 
-aws eks update-kubeconfig --name your-cluster-name --region your-region
+ - aws eks update-kubeconfig --name your-cluster-name --region your-region
 
 <img width="1150" height="68" alt="Screenshot 2025-08-28 at 12 35 16 PM" src="https://github.com/user-attachments/assets/c3e8438e-2df0-4199-88b7-ce66ed9a74be" />
 
@@ -68,7 +68,7 @@ eksctl create fargateprofile \
 
 Once the fargate profile is created, we proceed to create our deployment using kubectl. The deployment file is linked here. Use the below command to directly create the deployment.
 
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/examples/2048/2048_full.yaml
+ - kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/examples/2048/2048_full.yaml
 
 
 <img width="1172" height="138" alt="Screenshot 2025-08-28 at 12 39 39 PM" src="https://github.com/user-attachments/assets/dbade500-bd56-4794-b6f9-37c5b269756e" />
@@ -87,13 +87,13 @@ Analyzing our ingress resource “ingress-2048”, we see that we have a wildcar
 
 One prerequisite before creating an ingress controller is configuring IAM OIDC provider. The ingress controller (ALB controller) needs to access the Application Load Balancer. Note that a controller is just a K8S pod which needs to talk to AWS resources. This can only be achieved by providing the necessary IAM permissions hence the use of a connector (OIDC). Run the below command to associate the identity provider with our cluster:
 
-eksctl utils associate-iam-oidc-provider --cluster cluster_name --approve --region region_name
+ - eksctl utils associate-iam-oidc-provider --cluster cluster_name --approve --region region_name
 
 <img width="964" height="145" alt="Screenshot 2025-08-28 at 12 44 40 PM" src="https://github.com/user-attachments/assets/5dcb917b-74e3-4c70-b69a-41435a8cdd34" />
 
 Our ALB controller pod should have access to AWS services such as ALB in order to create the service. Let us grant permissions by running the iam_policy.json file from the official ALB controller documentation.
 
-curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
+ - curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
 
 <img width="961" height="90" alt="Screenshot 2025-08-28 at 12 45 29 PM" src="https://github.com/user-attachments/assets/8e6e66c2-2d9e-4fc5-9570-4c906559dd41" />
 
@@ -122,8 +122,8 @@ Finally we can deploy the ALB Controller. We shall use a helm chart to create th
 
 Let us add helm to our repo and update our helm repo
 
-helm repo add eks https://aws.github.io/eks-charts
-helm repo update eks
+ - helm repo add eks https://aws.github.io/eks-charts
+ - helm repo update eks
 
 <img width="802" height="136" alt="Screenshot 2025-08-28 at 12 50 04 PM" src="https://github.com/user-attachments/assets/97631546-5cf8-444d-965c-0cdb8feef481" />
 
@@ -140,7 +140,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n ku
 
 Verifying the load balancer has been created:
 
-kubectl get deployment -n kube-system aws-load-balancer-controller
+ - kubectl get deployment -n kube-system aws-load-balancer-controller
 
 <img width="957" height="81" alt="Screenshot 2025-08-28 at 12 53 34 PM" src="https://github.com/user-attachments/assets/b7a6dec9-e5db-49bb-b09a-7130df46e855" />
 
@@ -162,7 +162,7 @@ We can use this address in a browser and we should finally have our game!
 
 We have successfully deployed our 2048 game publicly. Remember to delete your EKS cluster after playing around with the game.
 
-eksctl delete cluster --name demo-cluster --region region-name
+ - eksctl delete cluster --name demo-cluster --region region-name
 
 <img width="946" height="117" alt="Screenshot 2025-08-28 at 1 01 04 PM" src="https://github.com/user-attachments/assets/db915b26-fe7d-41b2-a98e-a24881be12f5" />
 
