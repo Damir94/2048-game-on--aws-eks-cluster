@@ -65,6 +65,7 @@ eksctl create fargateprofile \
 
 <img width="1384" height="222" alt="Screenshot 2025-08-28 at 12 38 34 PM" src="https://github.com/user-attachments/assets/6f90c35b-12b5-4651-849f-f3a58a39ad6b" />
 
+
 Once the fargate profile is created, we proceed to create our deployment using kubectl. The deployment file is linked here. Use the below command to directly create the deployment.
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/examples/2048/2048_full.yaml
