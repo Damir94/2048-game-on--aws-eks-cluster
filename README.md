@@ -75,9 +75,9 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-bala
 
 Verify that the pods/service/ingress are getting created with the command
 
-kubectl get pods -n game-2048
-kubectl get svc -n game-2048
-kubectl get ingress -n game-2048
+ - kubectl get pods -n game-2048
+ - kubectl get svc -n game-2048
+ - kubectl get ingress -n game-2048
 
 <img width="793" height="375" alt="Screenshot 2025-08-28 at 12 41 33 PM" src="https://github.com/user-attachments/assets/11cc7feb-a9e8-4ba9-aad2-2a9dab974a0b" />
 
