@@ -24,3 +24,8 @@ Configuring AWS CLI and Kubectl
 After downloading and installing AWS CLI as per the prerequisites above, configure the AWS CLI credentials:
 
 aws configure
+
+- Enter the access key ID and secret access key of the IAM user you created earlier.
+- Choose a default region and output format for AWS CLI commands e.g. us-west-2 and JSON respectively.
+
+<img width="702" height="176" alt="Screenshot" src="https://github.com/user-attachments/assets/b78bcac9-452f-4099-949c-2a0099e17104" />
