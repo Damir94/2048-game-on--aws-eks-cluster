@@ -1,4 +1,3 @@
-
 ![Screenshot](https://github.com/user-attachments/assets/eba724e3-66b4-42d0-bd2a-622bb3a684cc)
 
 Today we shall have a step-by-step end-to-end deployment of the 2048 game on the AWS EKS platform.
